@@ -1,0 +1,137 @@
+html
+    head
+        link(rel="stylesheet", href="/profile.css")
+            
+        title MooVie Database
+body
+    include header
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+
+    div#main
+        |  
+        h4 User Name: #{user.userName}
+        if (session.userId == user._id)
+            form
+                if user.Contributing
+                    | Contributing:
+                    input(type="radio" class="contributing" name="contribute" value="true,"+user._id checked) 
+                    br
+                    |Regular: 
+                    input(type="radio" class="contributing" name="contribute" value="false,"+user._id ) 
+                else 
+                    | Contributing:
+                    input(type="radio" class="contributing" name="contribute" value="true,"+user._id ) 
+                    br
+                    |Regular: 
+                    input(type="radio" class="contributing" name="contribute" value="false,"+user._id checked) 
+                br
+                br
+            br
+
+        
+            h4 People you are following
+            div#people
+                each person in user.peopleFollowing
+                    div
+                        br
+                        a(href='/people/'+person._id) #{person.Name}
+                        |
+                        |
+                        |
+                        button(type='button' class="unfollowPerson" value="/users/"+user._id+"/followedPeople/"+person._id id=person._id) Unfollow
+                        br
+                
+            <br>
+            div#following
+                h4 Users you are following
+                each u in user.usersFollowing
+                    div
+                        br
+                        a(href='/users/'+u._id) #{u.userName}
+                        |
+                        |
+                        |
+                        button(type='button' class="unfollowUser" value="/users/"+user._id+"/followedUsers/"+u._id id=u._id) Unfollow 
+                        br
+                        
+
+            br
+            h4 Movies on Watch List
+            div#watch
+                each movie in user.watchList
+                    br
+                    pre
+                        a(href='/movies/' +movie._id) #{movie.Title}
+                        |
+                        |
+                        |
+                        button(type='button' class="removeMovieWatchList" id=movie._id value="/users/"+user._id+"/watchList/"+movie._id ) Remove
+                
+
+            h4 Recommended Movies
+            div#recc
+                each movie in user.Recommended
+                    br
+                    a(href='/movies/'+movie._id) #{movie.Title}
+                    br
+                    br
+                    
+
+            h4 Notifications
+            div#notif
+                each notif in user.Notifications
+                    br
+                    
+                    |
+                    |
+                    div
+                        if (notif.Person) 
+                            form(action='/movies/'+notif.goTo method="get")
+                                |
+                                |
+                                |#{notif.Name}
+                                |#{notif.Details}
+                                |
+                                button(type='submit' onclick='submit') View
+                                
+                        else 
+                            form(action='/reviews/'+notif.goTo method="get")
+                                |
+                                |
+                                |#{notif.Name}
+                                |#{notif.Details}
+                                |
+                                button(type='submit' onclick='submit') View
+                        button(type='button' class="deleteNotif" value="/users/"+user._id+"/notifications/"+notif._id id=notif._id)  Delete 
+                        br
+            br
+            br
+            br
+        else 
+            if session.loggedIn
+                if user.following
+                    div#userPage
+                        button(type='button' class="unfollowUser" value="/users/"+session.userId+"/followedUsers/"+user._id id=user._id) Remove from Followed Users
+                else  
+                    form(action="/users/"+session.userId+"/followedUsers" method="POST") 
+                        input(type="hidden" name="otherUserId" value=user._id)
+                        button(type="submit") Add to Followed Users
+
+            h4 People #{user.userName} Follows: 
+            for person in user.peopleFollowing
+                |
+                |
+                a(href='/people/'+person._id) #{person.Name}
+                br
+                br
+                br
+            
+            h4 Reviews written by #{user.userName}
+            for review in user.Reviews
+                a(href='/reviews/'+review._id) #{review.reviewSummary}
+
+
+script(src='/profile.js')
+

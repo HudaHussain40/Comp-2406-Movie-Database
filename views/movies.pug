@@ -1,0 +1,29 @@
+html
+    head
+        link(rel="stylesheet", href="/movies.css")
+        title MooVie Database
+body
+    include header
+
+    div#main
+    br
+    br
+    for movie in movies
+        a(href='/movies/'+movie._id) #{movie.Title}
+        br
+        br
+        br
+        br
+
+
+
+    if m.current > 1
+        - let url = "http://localhost:3000/movies?page=" + (m.current-1)
+        - if(m.query.length > 0){ url += "&" + m.query; }
+        a(href=url) Previous
+        | 
+    if(movies.length == 10)
+        - url = "http://localhost:3000/movies?page=" + (m.current+1)
+        - if(m.query.length > 0){ url += "&" + m.query; }
+        a(href=url) Next
+

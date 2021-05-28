@@ -1,0 +1,94 @@
+title {
+    color: rgb(248, 200, 136);
+    display: block;
+    align-content: center;
+}
+
+
+h3,h4, h1,h5 {
+    color: rgb(207, 181, 64);
+    display: block;
+    align-content: center;
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+#main, #directors, #actors, #writers,#plot,#awards,#genres,#similar {
+    display: block;
+    align-content: center;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#i {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+#awards, #plot {
+    color: rgb(161, 116, 56);
+}
+#header {
+    background-color: rgb(161, 116, 56);
+    padding: 10px;
+    color: rgb(243, 224, 224);
+}
+
+a, a:link {
+    color: rgb(136, 108, 108);
+
+    text-decoration: none;
+    background-color: rgb(161, 116, 56);
+    color: rgb(243, 224, 224);
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+  }
+
+
+button {
+    color: rgb(136, 108, 108);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#r {
+    display: block;
+    align-content: left;
+    text-align: left;
+    text-decoration: underline;
+}
+
+dt {
+    background-color: rgb(161, 116, 56);
+    padding: 10px;
+}
+
+dd {
+    display: block;
+    align-content: right;
+    text-align: right;
+    text-decoration: underline;
+}
+
+#addReview {
+    color: rgb(161, 116, 56);
+    height:200px;
+    font-size:14pt;
+}
+
+#review {
+    height:100px;
+    width: 400px;
+    font-size:8pt;
+}
+
+input {
+    color: rgb(136, 108, 108);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#userId, #movieId {
+    display: none;
+}

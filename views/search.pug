@@ -1,0 +1,36 @@
+html
+    head
+        link(rel="stylesheet", href="/search.css")
+        title MooVie Database
+body
+    include header 
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+
+    div#main
+    form(action='/movies' method='get')
+        br
+        br
+        |Title
+        |
+        |
+        input(type="text" id="title" name="Title")
+        br
+        br
+        |Genre
+        br
+        div(class="checkboxes")
+            for g in genre
+                input(type='checkbox' name="Genre" value=g)
+                |#{g}
+                br 
+        br
+        br
+        |Actor
+        |
+        |
+        input(type="text" id="actors" name="Actor")
+        br
+        br
+        button(type='submit') Search

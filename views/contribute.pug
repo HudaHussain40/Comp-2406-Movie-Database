@@ -1,0 +1,152 @@
+html
+    head
+        link(rel="stylesheet", href="/contribute.css")
+        title MooVie Database
+body
+    include header 
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+
+    div#main
+        if !Contributing
+            |Sorry you are not Authorized to Contribute! :(
+            |It's super easy be a contributing user though! just go to your profile and click contributing! 
+            |Its free! and simple! and when you think about it.. a bit too easy hmmmmm
+            |Go here to change it! 
+            br
+            br
+            br
+            a(href="/users/"+session.userId) Click Me! 
+        else
+            br
+            br
+            |Add a Person:
+            br
+            br
+            input(type="textbox" id = "person" name= "Name" required)
+            br
+            br
+            button(type="button" onclick="addPerson()") Add
+            div#personReponse
+            br
+            br
+            br
+            div#movieEntry
+                |Add a Movie:
+                br
+                br
+                br 
+                div#enterTitle
+                    |Title:
+                    input(id="title" type="text" name="Title")
+                    button#addTitle(type="button" onclick="addTitle()") Add
+                br
+                |Title
+                |
+                |
+                br
+                p#TitleInfo 
+                br
+                br 
+                |RunTime (In Minutes):
+                |
+                |
+                br
+                input(id="runtime" type="number" name="RunTime" min=1)
+                button#addRunTime(type="button" onclick="addRunTime()") Add
+                br
+                br
+                |RunTime
+                |
+                |
+                br
+                p#RunTimeInfo
+                br
+                br
+                |Released:
+                |
+                |
+                br
+                input(id="releaseYear" type="date" name="ReleaseYear")
+                button#addReleased(type="button" onclick="addReleased()") Add
+                br
+                br
+                |Released
+                |
+                |
+                p#ReleasedInfo 
+                br
+                br
+                |Plot:
+                |
+                |
+                br
+                textarea(id="plot" type="text-box" name="plot" height:200px)
+                br
+                br
+                button#addPlot(type="button" onclick="addPlot()") Add
+                br
+                br
+                |Plot
+                |
+                |
+                br
+                p#PlotInfo 
+                br
+                br
+                |Writer Search:
+                |
+                |
+                br
+                input(id="writers" type="text" name="Writer")
+                br
+                select#writerSelect(name = "writerSelect")
+                button(type="button" onclick="addWriter()") Add
+                br
+                br
+                |Writer(s)
+                div#writers
+                    p#writerList 
+                br
+                |Directors(s) Search:
+                |
+                |
+                br
+                input(id="director" type="text" name="Director")
+                br
+                select#directorSelect(name = "directorSelect")
+                button(type="button" onclick="addDirector()") Add
+                br
+                br
+                |Director(s)
+                div#directors
+                    p#directorList 
+
+                |Actors Search:
+                |
+                |
+                br
+                input(id="actors" type="text" name="Actor")
+                br
+                select#actorSelect(name = "actorSelect")
+                button(type="button" onclick="addActor()") Add
+                br
+                |Actors
+                div#actors
+                    p#actorsList 
+                br
+                br
+                |Genre(s):
+                |
+                |
+                input(id="genre" type="text" name="Genre")
+                button(type="button" onclick="addGenre()") Add
+                br
+                |Genre(s)
+                div#genres
+                    p#genreList
+                br 
+                button(type="button" onclick="addMovie()") Add movie
+
+script(src='/contribute.js')

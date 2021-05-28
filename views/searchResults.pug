@@ -1,0 +1,18 @@
+html
+    head
+        link(rel="stylesheet", href="/movies.css")
+        title MooVie Database
+body
+    include header
+
+    div#main
+    br
+    br
+    h1 Search Results
+    br
+    for movie in movies
+        a(href='/movies/example') #{movie.Title}
+        br
+        br
+        br
+        br

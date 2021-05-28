@@ -1,0 +1,19 @@
+html
+    head
+        link(rel="stylesheet", href="/people.css")
+        title MooVie Database
+body
+    include header
+
+    div#main
+
+    h1 People
+
+    for person in people 
+        a(href="/people/"+person._id) #{person.Name}
+        br
+        br
+        br
+
+    
+    

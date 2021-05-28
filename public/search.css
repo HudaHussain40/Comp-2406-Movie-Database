@@ -1,0 +1,41 @@
+body {
+    color: rgb(161, 116, 56);
+}
+title {
+    color: rgb(248, 200, 136);
+    display: block;
+    align-content: center;
+}
+
+
+#main,h2 {
+    text-align: center;
+    display: block;
+    align-items: center;
+    color: rgb(161, 116, 56);
+}
+
+#header {
+    background-color: rgb(161, 116, 56);
+    padding: 10px;
+    color: rgb(243, 224, 224);
+}
+
+a, a:link {
+    color: rgb(136, 108, 108);
+
+    text-decoration: none;
+    background-color: rgb(161, 116, 56);
+    color: rgb(243, 224, 224);
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+  }
+
+
+input {
+    color: rgb(136, 108, 108);
+    background-color: transparent;
+    text-decoration: none;
+    vertical-align: -2px;
+}
+

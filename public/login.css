@@ -1,0 +1,43 @@
+title {
+    background-color: rgb(161, 116, 56);
+    padding: 10px;
+    color: rgb(243, 224, 224);
+}
+
+
+h4,h1 {
+    color: rgb(136, 108, 108);
+    background-color: transparent;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    align-items: center;
+    text-justify: left;
+
+}
+
+#header {
+    background-color: rgb(161, 116, 56);
+    padding: 10px;
+    color: rgb(243, 224, 224);
+}
+
+a, a:link {
+    color: rgb(136, 108, 108);
+
+    text-decoration: none;
+    background-color: rgb(161, 116, 56);
+    color: rgb(243, 224, 224);
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px;
+  }
+
+body {
+        color: rgb(136, 108, 108);
+}
+
+button  {
+    color: rgb(136, 108, 108);
+    background-color: transparent;
+    text-decoration: none;
+}

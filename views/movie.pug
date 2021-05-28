@@ -1,0 +1,119 @@
+html
+    head
+        link(rel="stylesheet", href="/movie.css")
+        title MooVie Database
+body
+    include header
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+
+    div#main
+    br
+    if session.loggedIn
+        if movie.watched
+            div
+                button(type='button' class="removeMovieWatchList" value=""+session.userId+","+movie._id id="removeWatch") Remove from Watch List
+        else    
+            form(action="/users/"+session.userId+"/watchList" method="POST") 
+                input(type="hidden" name="movieId" value=movie._id)
+                button(type="submit") Add to Watch List
+
+    h1= movie.Title
+    img#i(src=''+movie.Poster)
+    h5 Year: #{movie.Year}  Released: #{movie.Released} Runtime: #{movie.Runtime}
+    h3 Rating: #{movie.Rated}
+
+    h3 Genres
+    div#genres 
+        for genre in movie.Genre
+            a(href="/movies?Genre="+genre) #{genre}
+            |
+            |
+            |
+            |
+            |
+    div#directors
+        h3 Directors
+
+        for director in movie.Director
+            a(href="/people/"+director._id) #{director.Name}
+            br
+            br
+            br
+    div#writers
+        h3 Writers
+        for writer in movie.Writer
+            a(href="/people/"+writer._id) #{writer.Name}
+            br
+            br
+            br
+    div#actors
+        h3 Actors 
+        for actors in movie.Actors
+            a(href="/people/"+actors._id) #{actors.Name}
+            br
+            br
+            br
+
+    br
+    br
+    h4 Plot
+    p#plot #{movie.Plot}
+    h4 Awards
+    div#awards 
+        | #{movie.Awards}
+        br
+    div#similar
+        if(movie.similarMovies.length>0)
+            h5 Similar movies 
+            for m in movie.similarMovies
+                a(href="/movies/"+m._id) #{m.Title}
+                br
+                br
+                br
+
+    h4#r Reviews 
+    div#reviews
+        dl
+            for review in movie.Reviews 
+                dt
+                    a(href="/reviews/"+review._id) #{review.reviewSummary}
+                        p#ratings Rating #{review.Rating}
+                br
+                br
+                |
+                |
+                dd
+                    a(href="/users/"+review.userId._id)  #{review.userId.userName}
+                br 
+    div#addReview 
+        h4 Add Review
+        form#f(action="/reviews" method="POST")
+            p 
+                |Review Summary:   
+                |
+                |
+                input(type='text', name='reviewSummary', value='' required)
+                br
+                br
+                |   Review
+                |
+                |
+                br
+                textarea#review(form="f" name='reviewText', value='' required)
+                br
+                br
+                |   Rating
+                |
+                |
+                input(type = 'number' ,min = 1, max = 10 form='f' name="Rating" required)
+                br
+                br
+                input(type="hidden" name="movieId" value=movie._id)
+                input(type="hidden" name="userId" value=session.userId)
+                input(type = 'submit')
+                br
+                br
+
+script(src='/movie.js')

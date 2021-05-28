@@ -1,0 +1,62 @@
+html
+    head
+        link(rel="stylesheet", href="/person.css")
+        title MooVie Database
+body
+    include header
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+    br
+    if session.loggedIn
+        if person.following
+            div
+                button(type='button' class="removePeopleFollow" value=""+session.userId+","+person._id id="removePerson")
+                    | Unfollow
+        else    
+            form(action="/users/"+session.userId+"/followedPeople" method="POST") 
+                input(type="hidden" name="personId" value=person._id)
+                button(type="submit") Follow Person
+    div#main
+    h1= person.Name 
+    br
+    if person.Wrote.length > 0
+        h3 Wrote 
+        div#wrote
+            for movie in person.Wrote 
+                a(href="/movies/"+movie._id) #{movie.Title}
+                br
+                br
+                br
+    if person.Acted.length > 0
+        h3 Acted 
+        div#acted
+            for movie in person.Acted 
+                a(href="/movies/"+movie._id) #{movie.Title}
+                br
+                br
+                br
+
+
+    
+    if person.Directed.length > 0
+        div#directed
+            h3 Directed 
+            br
+            for movie in person.Directed 
+                a(href="/movies/"+movie._id) #{movie.Title}
+                br
+                br
+                br
+    
+    if person.frequentCollaborators.length > 0
+        h4 Frequent Collaborators
+        br
+        div#frequentCollaborators
+            for p in person.frequentCollaborators
+                a(href="/people/"+p._id) #{p.Name}
+                br
+                br
+                br
+
+script(src='/person.js')

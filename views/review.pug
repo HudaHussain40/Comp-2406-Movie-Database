@@ -1,0 +1,18 @@
+html
+    head
+        link(rel="stylesheet", href="/review.css")
+        title MooVie Database
+body
+    include header 
+        |
+        |
+        a#movies(href="/users/"+session.userId) Profile
+
+    div#main
+        h1= review.reviewSummary 
+        h3 Movie Name:
+        a(href="/movies/"+review.movieId._id)  #{review.movieId.Title}
+        h2= review.reviewText
+        h3 Written by 
+        a(href="/users/"+review.userId._id)  #{review.userId.userName}
+        h5= "Rating: " + review.Rating + "/10"
