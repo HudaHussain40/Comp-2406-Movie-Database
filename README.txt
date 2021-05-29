@@ -1,6 +1,6 @@
 Student Name: Huda Hussain Student ID: 101211170
 
-This is a server that represents the unfinished final project which is a movie server
+This is a server that represents the final project which is a movie server for COMP 2406 Carelton University
 You can compile this using node.
 Open a terminal and enter the directory where the server is located.
 Once in the directory enter this into your terminal:
